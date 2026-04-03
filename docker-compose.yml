@@ -53,12 +53,6 @@ services:
       - "8000:8000"
     env_file:
       - .env
-    environment:
-      - DATABASE_URL=postgresql+asyncpg://postgres:password@db:5432/bharatvoice
-      - REDIS_URL=redis://redis:6379/0
-      - CELERY_BROKER_URL=redis://redis:6379/1
-      - CELERY_RESULT_BACKEND=redis://redis:6379/2
-      - QDRANT_URL=http://qdrant:6333
     depends_on:
       db:
         condition: service_healthy
@@ -75,11 +69,6 @@ services:
     command: celery -A app.worker worker --loglevel=info
     env_file:
       - .env
-    environment:
-      - DATABASE_URL=postgresql+asyncpg://postgres:password@db:5432/bharatvoice
-      - REDIS_URL=redis://redis:6379/0
-      - CELERY_BROKER_URL=redis://redis:6379/1
-      - CELERY_RESULT_BACKEND=redis://redis:6379/2
     depends_on:
       db:
         condition: service_healthy
