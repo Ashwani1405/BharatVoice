@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 
-export default function Badge({ children, status = 'default' }) {
+export default function Badge({ children, status = 'default' }: { children: React.ReactNode, status?: 'default' | 'success' | 'warning' | 'danger' }) {
   const styles = {
     default: 'bg-slate-700 text-slate-300',
     success: 'bg-emerald-900/50 text-emerald-400 border border-emerald-800',

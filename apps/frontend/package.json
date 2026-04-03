@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "lint": "eslint src --ext js,jsx --report-unused-disable-directives",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -18,6 +18,9 @@
     "clsx": "^2.1.0"
   },
   "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.3.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.57.0",
@@ -26,6 +29,7 @@
     "postcss": "^8.4.0",
     "rimraf": "^5.0.0",
     "tailwindcss": "^3.4.0",
+    "typescript": "^5.4.5",
     "vite": "^5.3.0"
   }
 }

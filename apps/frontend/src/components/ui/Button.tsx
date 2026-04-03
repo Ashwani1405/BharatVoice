@@ -1,7 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
 
-export default function Button({ children, onClick, variant = 'primary', className = '', type = 'button', disabled = false }) {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'danger' | 'ghost';
+  className?: string;
+}
+
+export default function Button({ children, onClick, variant = 'primary', className = '', type = 'button', disabled = false, ...props }: ButtonProps) {
   const baseStyles = 'px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed';
   
   const variants = {
@@ -17,6 +22,7 @@ export default function Button({ children, onClick, variant = 'primary', classNa
       onClick={onClick} 
       disabled={disabled}
       className={clsx(baseStyles, variants[variant], className)}
+      {...props}
     >
       {children}
     </button>

@@ -1,0 +1,7 @@
+
+> @bharatvoice/frontend@0.1.0 build C:\Users\USER\Desktop\HackBLR\bharatvoice\apps\frontend
+> tsc -b && vite build
+
+src/api/client.ts(4,24): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+src/utils/constants.ts(1,37): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+ ELIFECYCLE  Command failed with exit code 2.

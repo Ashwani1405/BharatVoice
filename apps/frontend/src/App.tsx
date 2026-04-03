@@ -7,7 +7,7 @@ import KYCQueue from './pages/admin/KYCQueue';
 import FraudMonitor from './pages/admin/FraudMonitor';
 
 // Simple protected route wrapper
-const ProtectedRoute = ({ children, adminOnly = false }) => {
+const ProtectedRoute = ({ children, adminOnly = false }: { children: React.ReactNode, adminOnly?: boolean }) => {
   // In a real app, this would use useAuth() logic
   const isAuthenticated = true; // Placeholder
   const isAdmin = true; // Placeholder

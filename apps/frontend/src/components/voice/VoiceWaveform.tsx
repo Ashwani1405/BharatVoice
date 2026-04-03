@@ -5,7 +5,7 @@
 // TODO: Sprint 2 — implement this component
 import React from 'react';
 
-export default function VoiceWaveform({ isSpeaking }) {
+export default function VoiceWaveform({ isSpeaking }: { isSpeaking: boolean }) {
   return (
     <div className="flex items-center justify-center space-x-1 h-12">
       {/* Placeholder animation for now */}

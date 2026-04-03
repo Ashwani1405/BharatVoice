@@ -5,7 +5,7 @@
 // TODO: Sprint 3 — implement this component
 import React from 'react';
 
-export default function DocumentUpload({ onUpload }) {
+export default function DocumentUpload({ onUpload }: { onUpload?: (file: File) => void }) {
   return (
     <div className="border-2 border-dashed border-slate-600 rounded-xl p-8 text-center bg-slate-800/50">
       <p className="text-slate-400 mb-4">Drag and drop your ID (Aadhaar or PAN) here</p>
