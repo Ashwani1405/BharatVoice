@@ -1,0 +1,10 @@
+{
+  "name": "@bharatvoice/ui",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./index.js",
+  "scripts": {
+    "lint": "echo 'No lint configured for ui package yet'",
+    "clean": "rimraf dist"
+  }
+}
