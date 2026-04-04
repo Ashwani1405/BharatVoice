@@ -79,7 +79,8 @@ services:
 
   frontend:
     build:
-      context: ./apps/frontend
+      context: .
+      dockerfile: ./apps/frontend/Dockerfile
     container_name: bharatvoice_frontend
     restart: unless-stopped
     ports:
