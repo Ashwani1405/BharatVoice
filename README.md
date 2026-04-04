@@ -54,5 +54,5 @@ BharatVoice is a voice-first financial inclusion platform for rural Indian users
 | Sprint 7 | Final Polish & Handoff | 🔄 |
 
 ## Team
-**Team Coral Reef**  
+**Team Dhurandhar**  
 *MAIT Delhi*
