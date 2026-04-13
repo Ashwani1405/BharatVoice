@@ -9,6 +9,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r requirements.t
 
 FROM python:3.11-slim
 
+RUN apt-get update && apt-get install -y tesseract-ocr libpq5 && rm -rf /var/lib/apt/lists/*
 RUN groupadd -r appuser && useradd -r -g appuser appuser
 
 WORKDIR /app

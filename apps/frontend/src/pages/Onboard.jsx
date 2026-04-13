@@ -5,9 +5,9 @@ import TranscriptPanel from '../components/voice/TranscriptPanel';
 import { useVoice, useMockVoice } from '../hooks/useVoice';
 import { KYC_FIELDS, KYC_FIELD_LABELS } from '../utils/constants';
 
-// NOTE: Switch this to `useVoice` once the backend PRs are fully merged
-const currentHook = useMockVoice; 
-// const currentHook = useVoice; 
+// NOTE: Switch to `useMockVoice` for local dev without backend
+// const currentHook = useMockVoice; 
+const currentHook = useVoice; 
 
 export default function Onboard() {
   const navigate = useNavigate();

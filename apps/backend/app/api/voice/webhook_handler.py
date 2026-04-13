@@ -9,7 +9,7 @@ from app.services.voice.agent_config import build_agent
 from app.services.voice.language_router import detect_language
 # Using the placeholder database execute here (update tables imports as schema evolves)
 from app.database import execute 
-# from app.tasks.kyc_tasks import initiate_kyc_verification  # (Uncomment in Sprint 3)
+from app.tasks.kyc_tasks import initiate_kyc_verification
 
 logger = logging.getLogger(__name__)
 
@@ -78,7 +78,7 @@ async def handle_function_call(call_id: str, payload: dict) -> dict:
             if user_id_raw:
                 uid = user_id_raw.decode("utf-8")
                 logger.info(f"All KYC fields collected for user {uid}")
-                # initiate_kyc_verification.delay(uid) # Trigger celery
+                initiate_kyc_verification.delay(uid) # Trigger celery
                 
         # 4. Construct tool response
         missing = await session_manager.get_missing_fields(call_id)
