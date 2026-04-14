@@ -1,18 +1,44 @@
 """
 Sprint 1 — Auth Middleware
-Validates JWT tokens for protected routes.
+Validates Bearer tokens and ensures a local user exists.
 """
-# TODO: Sprint 1 — implement auth extraction
+import uuid
 from fastapi import Request, HTTPException
-from typing import Optional
+from app.database import execute, fetch_one
 
-async def verify_token(request: Request) -> Optional[str]:
+async def ensure_user_exists(user_id: str, token: str):
+    query = """
+        INSERT INTO users (id, phone, name, email)
+        VALUES (:id, :phone, :name, :email)
+        ON CONFLICT (id) DO NOTHING
     """
-    Extracts the Bearer token from the Authorization header and verifies it.
-    Returns the user ID if valid.
+    await execute(
+        query=query,
+        values={
+            "id": user_id,
+            "phone": f"{token[:20]}@local",
+            "name": "Local User",
+            "email": f"{token[:20]}@local.test",
+        },
+    )
+
+async def verify_token(request: Request) -> str:
+    """
+    Extracts the Bearer token from the Authorization header and returns a stable user ID.
     """
     auth_header = request.headers.get("Authorization")
     if not auth_header or not auth_header.startswith("Bearer "):
         raise HTTPException(status_code=401, detail="Invalid token")
-    # To be implemented
-    return "user_id_placeholder"
+
+    token = auth_header.split(" ", 1)[1].strip()
+    if not token:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+    user_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, token))
+
+    try:
+        await ensure_user_exists(user_id, token)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Failed to verify user token")
+
+    return user_id

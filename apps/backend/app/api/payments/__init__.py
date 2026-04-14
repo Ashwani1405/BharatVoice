@@ -1,8 +1,6 @@
 """
-Sprint 5 — Payment Routers
+Sprint 5 — Payment API Module
 """
-from fastapi import APIRouter
+from . import routes
 
-router = APIRouter()
-
-# TODO: Sprint 5 — implement payment endpoints
+__all__ = ["routes"]

@@ -38,10 +38,10 @@ export default function Landing() {
           </Button>
           <Button 
             variant="secondary"
-            onClick={() => console.log('Checking status...')}
+            onClick={() => navigate('/dashboard')}
             className="w-full sm:w-auto px-8 py-4 text-lg border border-slate-700 hover:border-slate-500 transition-all rounded-xl"
           >
-            Check Application Status
+            Go to Dashboard
           </Button>
         </div>
 
