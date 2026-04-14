@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import Landing from './pages/Landing';
 import Onboard from './pages/Onboard';
 import KYC from './pages/KYC';
@@ -19,6 +20,15 @@ const ProtectedRoute = ({ children, adminOnly = false }: { children: React.React
 };
 
 function App() {
+  // Initialize token on app load if it doesn't exist
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      // Generate a mock token for development
+      const mockToken = `mock_token_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      localStorage.setItem('token', mockToken);
+    }
+  }, []);
   return (
     <div className="min-h-screen bg-fintech-dark text-fintech-text flex flex-col font-sans">
       <main className="flex-grow">
