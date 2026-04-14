@@ -77,6 +77,20 @@ services:
     networks:
       - bharatvoice-network
 
+  pathway:
+    build:
+      context: ./apps/backend
+    container_name: bharatvoice_pathway
+    restart: unless-stopped
+    command: python -m app.services.fraud.pathway_stream
+    env_file:
+      - .env
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - bharatvoice-network
+
   frontend:
     build:
       context: .

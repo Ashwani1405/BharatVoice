@@ -31,3 +31,7 @@ def get_farewell(language: str) -> str:
     if language == "hi":
         return "धन्यवाद। आपकी जानकारी सुरक्षित कर ली गई है। आपका दिन शुभ हो।"
     return "Thank you. Your information has been secured. Have a good day."
+    
+def detect_language(text: str) -> str:
+    # Basic dummy detect language logic since this is just a stub for voice
+    return "hi" if any("\u0900" <= c <= "\u097F" for c in text) else "en"

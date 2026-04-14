@@ -1,0 +1,34 @@
+﻿[1] 1. Perfect Clean Entry
+python : Traceback (most recent call last):
+At line:1 char:1
++ python scripts\run_fraud_tests.py 2>&1 | Out-File -FilePath scripts\t ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\USER\Desktop\HackBLR\bharatvoice\apps\backend\scripts\run_fraud_tests.py", line 44, in run_test
+    print(f"  \u274c FAIL -> Expected {expected_action} array:{expected_flags}, but got {action} | Flags: {flags}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 2: character maps to <undefined>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\HackBLR\bharatvoice\apps\backend\scripts\run_fraud_tests.py", line 109, in <module>
+    execute_all_tests()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Desktop\HackBLR\bharatvoice\apps\backend\scripts\run_fraud_tests.py", line 54, in execute_all_tests
+    run_test("1. Perfect Clean Entry", "u1", {"name": "Alice Smith", "dob": "01-01-1990", "address": "100 Unique Way"}, {"ip_address": "1.1.1.1"}, 
+"allow")
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^
+  File "C:\Users\USER\Desktop\HackBLR\bharatvoice\apps\backend\scripts\run_fraud_tests.py", line 48, in run_test
+    print(f"  \u274c EXCEPTION -> API Error: {e}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 2: character maps to <undefined>
